@@ -12,6 +12,11 @@
     "build": "rollup -c",
     "dev": "ts-node-dev --transpile-only --files --quiet ./examples/with-typescript/app.ts"
   },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
   "keywords": [
     "express",
     "api",
