@@ -169,7 +169,7 @@ const generateRoutes = (files) => __awaiter(void 0, void 0, void 0, function* ()
             : `/${parsedFile.name}`;
         const url = buildRouteUrl(directory + name);
         const priority = calculatePriority(url);
-        const exports = yield import(path.join(file.path, file.name));
+        const exports = yield import('file://' + path.join(file.path, file.name));
         routes.push({
             url,
             priority,

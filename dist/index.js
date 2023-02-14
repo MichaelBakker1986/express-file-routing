@@ -193,7 +193,7 @@ const generateRoutes = (files) => __awaiter(void 0, void 0, void 0, function* ()
             : `/${parsedFile.name}`;
         const url = buildRouteUrl(directory + name);
         const priority = calculatePriority(url);
-        const exports = yield (function (t) { return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(t)); }); })(path__default["default"].join(file.path, file.name));
+        const exports = yield (function (t) { return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(t)); }); })('file://' + path__default["default"].join(file.path, file.name));
         routes.push({
             url,
             priority,
