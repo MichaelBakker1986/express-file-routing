@@ -8,10 +8,14 @@ import config from "./config"
 import { generateRoutes, walkTree } from "./lib"
 import { getHandlers, getMethodKey } from "./utils"
 
-const REQUIRE_MAIN_FILE = path.dirname(require.main?.filename || process.cwd())
+const cjsMainFilename = typeof require !== "undefined" && require.main?.filename
+const REQUIRE_MAIN_FILE = path.dirname(cjsMainFilename || process.cwd())
 
 type ExpressLike = Express | Router
+<<<<<<< HEAD
 
+=======
+>>>>>>> jonluca/main
 /**
  * Attach routes to an Express app or router instance
  *
@@ -22,15 +26,22 @@ type ExpressLike = Express | Router
  * @param app An express app or router instance
  * @param options An options object (optional)
  */
+<<<<<<< HEAD
 const createRouter = <T extends ExpressLike = ExpressLike>(
   app: T,
   options: Options = {}
 ): T => {
+=======
+const createRouter = async <T extends ExpressLike = ExpressLike>(
+  app: T,
+  options: Options = {}
+): Promise<T> => {
+>>>>>>> jonluca/main
   const files = walkTree(
     options.directory || path.join(REQUIRE_MAIN_FILE, "routes")
   )
 
-  const routes = generateRoutes(files)
+  const routes = await generateRoutes(files)
 
   for (const { url, exports } of routes) {
     const exportedMethods = Object.entries(exports)
@@ -50,7 +61,12 @@ const createRouter = <T extends ExpressLike = ExpressLike>(
 
     // wildcard default export route matching
     if (typeof exports.default !== "undefined") {
+<<<<<<< HEAD
       app.all.apply(null, [url, ...getHandlers(exports.default)])
+=======
+      const defaultHandlers = getHandlers(exports.default)
+      app.all.apply(null, [url, ...defaultHandlers])
+>>>>>>> jonluca/main
     }
   }
 
