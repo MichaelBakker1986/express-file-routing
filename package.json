@@ -1,10 +1,11 @@
 {
   "name": "express-file-routing",
-  "version": "2.1.2",
+  "version": "2.1.2-michael",
   "description": "Simple system-based file routing for Express",
   "author": "Matthias Halfmann",
   "repository": "matthiaaas/express-file-routing",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -35,5 +36,15 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "default": "./dist/index.js"
+      }
+    }
+  }
 }
